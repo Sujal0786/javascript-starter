@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather_Forcast</title>
-    <link href="images/clouds.png">
+    <link rel="icon" type="image/png" href="images/clouds.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -78,27 +78,7 @@
         else if(data.weather[0].main == "Smoke"){
             document.querySelector('.weather-icon').src="images/smoke.png";
         }  
-        else if(data.weather[0].main == "Haze"){
-            document.querySelector('.weather-icon').src="images/haze.png";
-        }  
-        else if(data.weather[0].main == "Dust"){
-            document.querySelector('.weather-icon').src="images/dust.png";
-        }  
-        else if(data.weather[0].main == "Fog"){
-            document.querySelector('.weather-icon').src="images/fog.png";
-        }  
-        else if(data.weather[0].main == "Sand"){
-            document.querySelector('.weather-icon').src="images/sand.png";
-        }  
-        else if(data.weather[0].main == "Ash"){
-            document.querySelector('.weather-icon').src="images/ash.png";
-        }  
-        else if(data.weather[0].main == "Squall"){
-            document.querySelector('.weather-icon').src="images/squall.png";
-        }  
-        else if(data.weather[0].main == "Tornado"){
-            document.querySelector('.weather-icon').src="images/tornado.png";
-        }     
+       
     }
      button.addEventListener('click',()=>{
       checkWeather(search.value);
