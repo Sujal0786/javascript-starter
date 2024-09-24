@@ -3,16 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const createNoteButton = document.querySelector('.btn');
     let notes = document.querySelectorAll('.input-box');
 
+
     function showNotes() {
         notesContainer.innerHTML = localStorage.getItem('notes');
     }
     
 
-
     showNotes();
+
+
     function updatestorage() {
         localStorage.setItem('notes', notesContainer.innerHTML);
     }
+
 
     createNoteButton.addEventListener('click', () => {
         let inputBox = document.createElement('p');
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = 'images/Delete-Transparent.png';
         notesContainer.appendChild(inputBox).appendChild(img);
     });
+
 
     notesContainer.addEventListener('click', (e) => {
         if (e.target.tagName === 'IMG') {
@@ -41,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
  
+   
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             document.execCommand('insertLineBreak');
@@ -49,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     );
 
+    
 
     // if you want to rset the notes  use that code below
     
