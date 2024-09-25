@@ -1,3 +1,24 @@
+document.getElementById('playlist-icon').addEventListener('click', function() {
+    var songQueue = document.getElementById('song-queue');
+    songQueue.classList.toggle('hidden');
+});
+
+function toggleQueue() {
+    const songQueue = document.getElementById("song-queue");
+    songQueue.classList.toggle("hidden");
+}
+
+function playSong(src, title, artist, imgSrc, index) {
+    currentSongIndex = index;
+    audio.src = src;
+    document.getElementById("title").textContent = title;
+    document.getElementById("artist").textContent = artist;
+    document.getElementById("song-image").src = imgSrc;
+    audio.play();
+    playButton.classList.remove('fa-play');
+    playButton.classList.add('fa-pause');
+}
+
 const audio = document.getElementById('audio');
 const playButton = document.getElementById('play');
 const nextButton = document.getElementById('next');

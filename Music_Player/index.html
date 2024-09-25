@@ -1,32 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music_Player</title>
-    <link rel="icon" href="images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/27e6a2b710.js" crossorigin="anonymous"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link rel="icon" href="images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/27e6a2b710.js"
+      crossorigin="anonymous"
+    ></script>
+    
+  </head>
+  <body>
     <div class="main_div">
-        <div class="music_container">
-            <h2 id="title">Who-They</h2>
-            <h3 id="artist">Karn Aujla</h3>
-            <div class="img_container">
-                <img id="song-image" src="images/song3.jpg" alt="">
-            </div>
-            <audio id="audio" controls></audio>
-            <input type="range" value="0" id="progress">
-
-            <div class="music_controls">
-                <i class="fas fa-backward" id="prev" title="Previous"></i>
-                <i class="fas fa-play" id="play" title="Play"></i>
-                <i class="fas fa-forward" id="next" title="Next"></i>
-            </div>
+      <div class="music_container">
+        <div class="header">
+          <img
+            src="images/playlist.png"
+            alt="Playlist"
+            id="playlist-icon"
+            onclick="toggleQueue()"
+          />
         </div>
-    </div>
 
-    <script src="script.js"></script>
-</body>
+        <h2 id="title">Who-They</h2>
+        <h3 id="artist">Karn Aujla</h3>
+        <div class="img_container">
+          <img id="song-image" src="images/song3.jpg" alt="" />
+        </div>
+        <audio id="audio" controls></audio>
+        <input type="range" value="0" id="progress" />
+
+        <div class="music_controls">
+          <i class="fas fa-backward" id="prev" title="Previous"></i>
+          <i class="fas fa-play" id="play" title="Play"></i>
+          <i class="fas fa-forward" id="next" title="Next"></i>
+        </div>
+        <!-- Hidden song queue -->
+        <div id="song-queue" class="hidden">
+          <ul>
+            <li
+              onclick="playSong('Music/song1.mp3', 'Bitch im-Back', 'Sidhu Mossewala', 'images/song1.png', 2)"
+            >
+              <img
+                src="images/song1.png"
+                alt="Bitch im-Back"
+                class="song-thumbnail"
+              />
+              <div class="song-details">
+                <span class="song-name">Bitch im-Back</span>
+                <span class="song-artist">Sidhu Mossewala</span>
+              </div>
+            </li>
+            <li
+              onclick="playSong('Music/song2.mp3', 'Brown Rang', 'Yo Yo Honey Singh', 'images/song2.jpg', 1)"
+            >
+              <img
+                src="images/song2.jpg"
+                alt="Brown Rang"
+                class="song-thumbnail"
+              />
+              <div class="song-details">
+                <span class="song-name">Brown Rang</span>
+                <span class="song-artist">Yo Yo Honey Singh</span>
+              </div>
+            </li>
+            <li
+              onclick="playSong('Music/song3.mp3', 'Who-They', 'Karn Aujla', 'images/song3.jpg', 0)"
+            >
+              <img
+                src="images/song3.jpg"
+                alt="Who-They"
+                class="song-thumbnail"
+              />
+              <div class="song-details">
+                <span class="song-name">Who-They</span>
+                <span class="song-artist">Karn Aujla</span>
+              </div>
+            </li>
+            <!-- Add more songs as needed -->
+          </ul>
+        </div>
+       
+        <script>
+          document.getElementById('playlist-icon').addEventListener('click', function() {
+            var songQueue = document.getElementById('song-queue');
+            songQueue.classList.toggle('hidden');
+          });
+
+          function toggleQueue() {
+            const songQueue = document.getElementById("song-queue");
+            songQueue.classList.toggle("hidden");
+          }
+
+          function playSong(src, title, artist, imgSrc, index) {
+            currentSongIndex = index;
+            audio.src = src;
+            document.getElementById("title").textContent = title;
+            document.getElementById("artist").textContent = artist;
+            document.getElementById("song-image").src = imgSrc;
+            audio.play();
+            playButton.classList.remove('fa-play');
+            playButton.classList.add('fa-pause');
+          }
+   </script>
+   <script src="script.js"></script>
+  </body>
 </html>
