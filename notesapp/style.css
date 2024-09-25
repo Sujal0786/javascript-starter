@@ -9,7 +9,7 @@
     width: 100%;
     min-width: 100vh;
     height: 100vh;
-    background: linear-gradient(135deg, #3c2551, #96c4ff);
+    background: linear-gradient(135deg, #41ccd9, #c3b238);
     color: white;
     padding-top: 4%;
     padding-left: 10%;
@@ -36,16 +36,16 @@
 .container button {
     display: flex;
     align-items: center;
-    background: linear-gradient(#9418fd, #571096);
+    background: linear-gradient(#ef6f6f, #8dab24);
     color: #fff;
     font-size: 20px;
     outline: 0;
-    border: 0;
+    border: 2px solid;
     border-radius: 40px;
     padding: 15px 25px;
     margin: 30px 0 20px;
     cursor: pointer;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Times New Roman', Times, serif;
 
 
 }
