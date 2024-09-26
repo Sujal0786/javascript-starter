@@ -133,7 +133,6 @@
     border: 5px solid #fff;
     box-shadow: 0 5px 5px rgba(255, 26, 26, 0.2);
   }
-
   @keyframes rotate {
     0% {
       transform: rotate(0deg);
@@ -141,6 +140,10 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+
+  .rotate {
+    animation: rotate 10s linear infinite;
   }
 
   audio {
