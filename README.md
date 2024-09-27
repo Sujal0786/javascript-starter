@@ -6,3 +6,5 @@
 <br>
 *Calculator   <a href="https://sujal0786.github.io/Calculator.js/"><strong>➥ Live Demo</strong></a>
 <br>
+*Tic_Tac_toe   <a href="https://sujal0786.github.io/Tic-tac-toe.js/"><strong>➥ Live Demo</strong></a>
+<br>
