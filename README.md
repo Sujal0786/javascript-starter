@@ -8,3 +8,5 @@
 <br>
 *Tic_Tac_toe   <a href="https://sujal0786.github.io/Tic-tac-toe/"><strong>➥ Live Demo</strong></a>
 <br>
+* Dictionary  <a href="https://sujal0786.github.io/Dict.js/"><strong>➥ Live Demo</strong></a>
+<br>
