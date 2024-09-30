@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toolButtons = document.querySelectorAll(".tool");
     const fillColorCheckbox = document.getElementById("fill-color");
     const sizeSlider = document.getElementById("size-slider");
-    const colorPicker = document.getElementById("color-picker");
+    const colorPickers = document.querySelectorAll("#color-picker");
     const clearButton = document.querySelector(".clear-canvas");
     const saveButton = document.querySelector(".save-img");
   
@@ -15,13 +15,29 @@ document.addEventListener("DOMContentLoaded", () => {
     let brushSize = 5;
     let selectedTool = "brush";
     let fillColor = false;
-    let selectedColor = "#4a98f7";
+    let selectedColor = "#000"; // Default black color
     let startX, startY;
     let snapshot;
   
     // Setup canvas dimensions
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
+  
+    // Utility to get touch/mouse coordinates
+    const getEventCoords = (e) => {
+      if (e.touches && e.touches[0]) {
+        // Touch event
+        return {
+          x: e.touches[0].clientX - canvas.getBoundingClientRect().left,
+          y: e.touches[0].clientY - canvas.getBoundingClientRect().top,
+        };
+      }
+      // Mouse event
+      return {
+        x: e.offsetX,
+        y: e.offsetY,
+      };
+    };
   
     // Save the current state of the canvas
     const saveCanvasState = () => {
@@ -36,8 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start drawing or begin shape drawing
     const startDrawing = (e) => {
       isDrawing = true;
-      startX = e.offsetX;
-      startY = e.offsetY;
+      const coords = getEventCoords(e);
+      startX = coords.x;
+      startY = coords.y;
       ctx.lineWidth = brushSize;
       ctx.strokeStyle = selectedColor;
       ctx.fillStyle = selectedColor;
@@ -47,8 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Draw based on selected tool
     const drawing = (e) => {
       if (!isDrawing) return;
-      const endX = e.offsetX;
-      const endY = e.offsetY;
+      const coords = getEventCoords(e);
+      const endX = coords.x;
+      const endY = coords.y;
   
       restoreCanvasState();
   
@@ -56,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.lineTo(endX, endY);
         ctx.stroke();
       } else if (selectedTool === "eraser") {
-        // Use clearRect to erase based on the brush size, centered around the cursor
         ctx.clearRect(endX - brushSize / 2, endY - brushSize / 2, brushSize, brushSize);
       } else {
         drawShape(endX, endY);
@@ -115,8 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     // Handle color picker change
-    colorPicker.addEventListener("input", (e) => {
-      selectedColor = e.target.value;
+    colorPickers.forEach((picker) => {
+      picker.addEventListener("input", (e) => {
+        selectedColor = e.target.value;
+      });
     });
   
     // Clear the canvas
@@ -127,15 +146,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save the canvas as an image
     saveButton.addEventListener("click", () => {
       const link = document.createElement("a");
-      link.download = "drawing.jpg";
+      link.download = "drawing.png";
       link.href = canvas.toDataURL();
       link.click();
     });
   
-    // Mouse events for drawing
+    // Mouse and touch events for drawing
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mousemove", drawing);
     canvas.addEventListener("mouseup", stopDrawing);
     canvas.addEventListener("mouseout", stopDrawing); // In case the user moves out of the canvas
+  
+    // Touch events for mobile drawing
+    canvas.addEventListener("touchstart", startDrawing);
+    canvas.addEventListener("touchmove", drawing);
+    canvas.addEventListener("touchend", stopDrawing);
   });
   
