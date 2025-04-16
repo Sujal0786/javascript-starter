@@ -1,5 +1,5 @@
 # JavaScripts_projects
-*Weather_Api     <a href="https://sujal0786.github.io/Weather.js/"><strong>➥ Live Demo</strong></a> 
+*Weather_Api     <a href="https://sujal0786.github.io/Weather.js/"><strong>➥ Live Demos</strong></a> 
 <br>
 *Notes_App       <a href="https://sujal0786.github.io/Notes_App.js/"><strong>➥ Live Demo</strong></a>
 <br>
